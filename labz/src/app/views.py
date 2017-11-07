@@ -16,13 +16,28 @@ from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 
-"""
-from .forms import PostForm
-from .models import Post
-"""
 from .models import Profesor
+from .forms import PostForm
 # Create your views here.
 
+
+
+def news_create(request):
+    form = PostForm(request.POST or None, request.FILES or None)
+    if form.is_valid():
+        post = form.save(commit=False)
+        post.save()
+        messages.success(request, "Post Created")
+        return HttpResponseRedirect(post.get_absolute_url())
+    context = {
+        "form": form
+    }
+    return render(request, "news_form.html", context)
+
+def create_prof(request):
+
+
+    return render(request,"history.html")
 
 def history(request):
 

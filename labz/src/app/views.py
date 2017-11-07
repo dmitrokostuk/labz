@@ -24,5 +24,10 @@ from .models import Profesor
 # Create your views here.
 
 
+def history(request):
+
+    return render(request,"history.html")
+
+
 def list(request):
     return render(request,"base.html")

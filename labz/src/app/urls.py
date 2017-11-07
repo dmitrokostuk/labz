@@ -17,8 +17,12 @@ urlpatterns = [
     url(r'^(?P<slug>[\w-]+)/delete/$', post_delete),
 ]__author__ = 'dmitro'
 """
-from .views import (list,)
+from .views import (list,
+                    history,)
 
 urlpatterns = [
+
     url(r'^$', list, name='list'),
+    url(r'^history/$', history, name='history'),
+
    ]

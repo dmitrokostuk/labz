@@ -5,12 +5,12 @@ from .models import Profesor
 
 
 
-class PostForm(forms.ModelForm):
+class CreateForm(forms.ModelForm):
     class Meta:
         model = Profesor
         fields = [
             "name",
-            " midlename",
+            "midlename",
             "surname",
             "image",
             "bio",

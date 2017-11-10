@@ -18,11 +18,12 @@ urlpatterns = [
 ]__author__ = 'dmitro'
 """
 from .views import (list,
-                    history,)
+                    history,
+                    news_create)
 
 urlpatterns = [
 
     url(r'^$', list, name='list'),
     url(r'^history/$', history, name='history'),
-
+    url(r'^create/$', news_create,)
    ]

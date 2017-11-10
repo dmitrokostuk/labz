@@ -21,6 +21,17 @@ from .forms import CreateForm
 # Create your views here.
 
 
+def list(request):
+    #main page
+    inf = Profesor.objects.all()
+
+    context = {
+        "prof_list": inf,
+
+
+    }
+    return render(request,"base.html",context)
+
 
 def news_create(request):
     form = CreateForm(request.POST or None, request.FILES or None)
@@ -34,6 +45,9 @@ def news_create(request):
     }
     return render(request, "post_form.html", context)
 
+def personal_info(request):
+
+    return render(request,"personal_info.html")
 def create_prof(request):
 
 
@@ -44,5 +58,3 @@ def history(request):
     return render(request,"history.html")
 
 
-def list(request):
-    return render(request,"base.html")

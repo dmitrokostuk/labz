@@ -6,8 +6,16 @@
 </head>
     <!-- Latest compiled and minified CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="css/custom.css" rel="stylesheet">
 <body>
 <div class="container">
+
+
+{% block header %}
+    {% include "header.html" %} <!-- подключаем «шапку» сайта -->
+{% endblock %}
+
+
 
     {% block main_menu %}
     {% include "main_menu.html" %} <!-- подключаем «шапку» сайта -->
@@ -45,10 +53,6 @@
 
 {% endfor %}
 </div>
-
-{% block header %}
-    {% include "header.html" %} <!-- подключаем «шапку» сайта -->
-{% endblock %}
 
 
 

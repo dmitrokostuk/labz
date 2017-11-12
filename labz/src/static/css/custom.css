@@ -1,0 +1,6 @@
+/*серый фон страницы*/
+#container{ background-color: rgba(26, 26, 26, 0.61);}
+body {
+	border-top: 5px solid #7e7e7e;
+
+}

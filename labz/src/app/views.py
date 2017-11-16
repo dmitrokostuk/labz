@@ -16,14 +16,14 @@ from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 
-from .models import Profesor
-from .forms import CreateForm
+from .models import Student
+from .forms import CreateFormStudent, CreateFormCourse, CreateFormGroup, CreateFormTeacher
 # Create your views here.
 
 
 def list(request):
     #main page
-    inf = Profesor.objects.all()
+    inf = Student.objects.all()
 
     context = {
         "prof_list": inf,
@@ -33,8 +33,8 @@ def list(request):
     return render(request,"base.html",context)
 
 
-def news_create(request):
-    form = CreateForm(request.POST or None, request.FILES or None)
+def student_create(request):
+    form = CreateFormStudent(request.POST or None, request.FILES or None)
     if form.is_valid():
         post = form.save(commit=False)
         post.save()
@@ -44,6 +44,20 @@ def news_create(request):
         "form": form
     }
     return render(request, "post_form.html", context)
+
+def teacher_create(request):
+    form = CreateFormTeacher(request.POST or None, request.FILES or None)
+    if form.is_valid():
+        post = form.save(commit=False)
+        post.save()
+        messages.success(request, "Post Created")
+        return HttpResponseRedirect(post.id)
+    context = {
+        "form": form
+    }
+    return render(request, "post_form.html", context)
+
+
 
 def personal_info(request):
 

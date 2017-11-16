@@ -14,9 +14,8 @@ def upload_location(instance, filename):
     return "%s/%s" %(instance.id, filename)
 
 
-class Profesor(models.Model):
+class Student(models.Model):
     name = models.TextField(max_length=120)
-    midlename = models.TextField(max_length=120)
     surname = models.TextField(max_length=120)
     image = models.ImageField(upload_to=upload_location,
             null=True,
@@ -24,4 +23,50 @@ class Profesor(models.Model):
             width_field="width_field",
             height_field="height_field")
     bio = models.TextField()
-    courser = models.TextField(max_length=120)
+    #group = models.OneToOneField(Group, on_delete=models.CASCADE)
+    def __unicode__(self):
+        return u"%s %s %s "%(self.name, self.surname,self.bio)
+
+    def __str__(self):
+           return u"%s %s %s "%(self.name, self.surname,self.bio)
+
+class Teacher(models.Model):
+
+    name = models.TextField(max_length=120)
+    surname = models.TextField(max_length=120)
+    image = models.ImageField(upload_to=upload_location,
+            null=True,
+            blank=True,
+            width_field="150px",
+            height_field="150px")
+    bio = models.TextField()
+    courser = models.OneToOneField(Course, on_delete=models.CASCADE)
+    def __unicode__(self):
+        return u"%s %s %s %s"%(self.name, self.surname,self.bio,self.courser)
+
+    def __str__(self):
+           return u"%s %s %s %s"%(self.name, self.surname,self.bio,self.courser)
+
+
+class Group(models.Model):
+    title=models.TextField(max_length=20)
+    course = models.TextField(max_length=15)
+    the_elder = models.TextField(max_length=12)
+    students = models.ForeignKey(Student, on_delete=models.CASCADE)
+
+    def __unicode__(self):
+        return u"%s %s %s %s"%(self.the_elder, self.title,self.course,self.students)
+
+    def __str__(self):
+           return u"%s %s %s %s"%(self.the_elder, self.title,self.course,self.students)
+
+class Course(models.Model):
+    info = models.TextField(max_length=123)
+    teacher = models.OneToOneField(Teacher, on_delete=models.CASCADE)
+    students = models.ForeignKey(Student, on_delete=models.CASCADE)
+
+    def __unicode__(self):
+        return u"%s %s "%(self.teacher, self.info,)
+
+    def __str__(self):
+        return u"%s %s "%(self.teacher, self.info,)

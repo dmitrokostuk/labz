@@ -19,11 +19,13 @@ urlpatterns = [
 """
 from .views import (list,
                     history,
-                    news_create)
+                    student_create,
+                    teacher_create)
 
 urlpatterns = [
 
     url(r'^$', list, name='list'),
     url(r'^history/$', history, name='history'),
-    url(r'^create/$', news_create,)
+    url(r'^create_student/$', student_create),
+    url(r'^teacher_create/$', teacher_create),
    ]

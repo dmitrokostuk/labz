@@ -18,17 +18,20 @@
 {% block header %}
     {% include "header.html" %} <!-- подключаем «шапку» сайта -->
 {% endblock %}
+<div class="col-md-12" id="heading">
+	<h1>About us</h1>
+</div>
 
-
-
-    {% block main_menu %}
-    {% include "main_menu.html" %} <!-- подключаем «шапку» сайта -->
-    {% endblock %}
-
- <div class="row">
-  {% for obj in prof_list %}
 <div class="row">
-  <div class="col-md-4">
+{% block main_menu %}
+      {% include "main_menu.html" %} <!-- подключаем «шапку» сайта -->
+      {% endblock %}
+{% for obj in prof_list %}
+
+
+
+
+    <div class="col-md-4">
     <div class="thumbnail">
         <tbody>
          <tr>
@@ -53,9 +56,8 @@
   </div>
 <hr/>
 
-</div>
-
 {% endfor %}
+
 </div>
 
 
